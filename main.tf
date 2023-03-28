@@ -6,7 +6,7 @@ resource "vault_kv_secret_v2" "example" {
   name                       = var.secret_name
   cas                        = 1
   delete_all_versions        = true
-  data_json                  = jsonencode(var.secret_key_value_pairs)
+  data_json                  = var.secret_key_value_pairs
   custom_metadata {
     max_versions = 5
     data = {
