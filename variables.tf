@@ -1,27 +1,20 @@
-variable "db_name" {
-  description = "Unique name to assign to RDS instance"
-  default = "blub"
+variable "secret_owner" {
+  description = "Please provide the owner of the secret."
 }
 
-variable "db_username" {
-  description = "RDS root username"
-  default = "blub"
+variable "planned_lifetime" {
+  description = "Please define the planned lifetime of the secret, e.g. 1h, or2d"
 }
 
-variable "db_password" {
-  description = "RDS root user password"
-  sensitive   = true
+variable "secret_name" {
+  description = "Please provide a secret name."
 }
 
-variable "storage_config" {
-  type = list(object({
-    name                      = string
-    account_kind              = string
-    account_tier              = string
-    account_replication_type  = string
-    access_tier               = string
-    enable_https_traffic_only = bool
-    min_tls_version           = string
-    is_hns_enabled            = bool
-  }))
+variable "secret_usage" {
+  description = "Please describe the usage of the secret."
 }
+
+variable "secret_key_value_pairs" {
+  description = "Please define the key-value pairs in the form of a json object, e.g. {\"name\":\"John\", \"age\":30, \"job\":\"Architect\"}."
+}
+

@@ -1,29 +1,18 @@
 provider "vault" {
 }
 
-resource "vault_mount" "kvv2" {
-  path        = "kvv2"
-  type        = "kv"
-  options     = { version = "2" }
-  description = "KV Version 2 secret engine mount"
-}
-
 resource "vault_kv_secret_v2" "example" {
-  mount                      = vault_mount.kvv2.path
-  name                       = "secret"
+  mount                      = "kv"
+  name                       = var.secret_name
   cas                        = 1
   delete_all_versions        = true
-  data_json                  = jsonencode(
-  {
-    zip       = "zap",
-    foo       = "bar"
-  }
-  )
+  data_json                  = jsonencode(var.secret_key_value_pairs)
   custom_metadata {
     max_versions = 5
     data = {
-      foo = "vault@example.com",
-      bar = "12345"
+      owner = var.secret_owner,
+      usage = var.secret_usage,
+      planned_lifetime = var.planned_lifetime
     }
   }
 }
