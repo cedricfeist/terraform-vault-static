@@ -1,4 +1,3 @@
-# Learn Terraform - No-Code Provisioning
+# Static Vault Secret - No Code Provisioning
 
-This is a companion repository for HashiCorp's [No-Code Provisioning
-tutorial](https://learn.hashicorp.com/tutorials/terraform/no-code-provisioning).
+This module creates a static secret in Vault. 
