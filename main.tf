@@ -1,7 +1,7 @@
 provider "vault" {
 }
 
-resource "vault_kv_secret_v2" "example" {
+resource "vault_kv_secret_v2" "secret" {
   mount                      = "kv"
   name                       = var.secret_name
   cas                        = 1
